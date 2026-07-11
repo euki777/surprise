@@ -1,0 +1,1449 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>🤍 Surprise For My Love 🤍</title>
+
+
+<style>
+
+.buttonArea{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    flex-wrap:wrap;
+
+    gap:20px;
+
+    margin-top:20px;
+
+}
+
+.smileButtonArea{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:20px;
+
+    margin-top:20px;
+
+    flex-wrap:wrap;
+
+}
+
+.smileGif{
+
+    width:clamp(100px,15vw,170px);
+
+    height:auto;
+
+    border-radius:20px;
+
+    animation:gifFloat 2s ease-in-out infinite;
+
+}
+
+@keyframes gifFloat{
+
+    0%,100%{
+
+        transform:translateY(0);
+
+    }
+
+    50%{
+
+        transform:translateY(-8px);
+
+    }
+
+}
+
+
+.startCat{
+
+    width:clamp(120px,18vw,180px);
+    height:auto;
+    object-fit:cover;
+
+    border-radius:25px;
+
+    opacity:0;
+
+    transform:translateX(120px) scale(.7);
+
+    transition:all .8s cubic-bezier(.22,1,.36,1);
+
+    box-shadow:0 15px 35px rgba(0,0,0,.35);
+
+    display:block;
+
+}
+
+.startCat.show{
+
+    opacity:1;
+
+    transform:translateX(0) scale(1);
+
+    animation:catFloat 2.5s ease-in-out infinite;
+
+}
+
+
+@keyframes catBounce{
+
+    0%,100%{
+        transform:translateY(0) rotate(-5deg);
+    }
+
+    50%{
+        transform:translateY(-10px) rotate(-5deg);
+    }
+
+}    
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:"Segoe UI",sans-serif;
+}
+
+
+body{
+
+    width:100vw;
+    height:100vh;
+
+    overflow-y:auto;
+    overflow-x:hidden;
+
+    background:
+    radial-gradient(circle at center,#14000d,#050505,#000);
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+}
+
+
+
+/* Floating hearts */
+
+.bg-heart{
+
+    position:absolute;
+
+    font-size:30px;
+
+    opacity:.3;
+
+    animation:float 8s linear infinite;
+
+}
+
+
+@keyframes float{
+
+from{
+    transform:translateY(110vh);
+}
+
+
+to{
+    transform:translateY(-20vh) rotate(360deg);
+}
+
+}
+
+
+
+/* MAIN CONTAINER */
+
+.card{
+
+    width:100vw;
+    height:100dvh;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    overflow-y:auto;
+    overflow-x:hidden;
+
+}
+
+
+
+.screen{
+
+    width:100%;
+    min-height:100dvh;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+
+    text-align:center;
+
+    padding:20px;
+    gap:18px;
+
+}
+
+
+
+.hidden{
+
+display:none!important;
+
+}
+
+
+
+
+h1{
+
+    font-size:clamp(2rem,5vw,3.8rem);
+
+    color:#ff477e;
+
+    text-shadow:0 0 20px pink;
+
+}
+
+
+
+p{
+
+    font-size:clamp(1rem,2vw,1.5rem);
+
+    color:white;
+
+    margin:10px 0;
+
+}
+
+
+
+button{
+
+    padding:16px clamp(28px,5vw,55px);
+
+    border:none;
+
+    border-radius:50px;
+
+    background:linear-gradient(45deg,#ff477e,#ff9ebb);
+
+    color:white;
+
+    font-size:clamp(18px,2vw,22px);
+
+    cursor:pointer;
+
+    box-shadow:0 0 30px #ff477e;
+
+    transition:.3s;
+
+}
+
+
+button:hover{
+
+transform:scale(1.1);
+
+}
+
+
+
+
+/* CAMERA */
+
+#cameraPage{
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+
+    gap:18px;
+
+    padding:20px;
+
+}
+
+#cameraPage h1{
+
+    font-size:clamp(2rem,4vw,3rem);
+
+}
+
+#cameraPage p{
+
+    margin:0;
+
+}
+
+
+
+video{
+
+    width:min(90vw,650px);
+
+    max-height:55vh;
+
+    aspect-ratio:4/3;
+
+    object-fit:cover;
+
+    border-radius:25px;
+
+    box-shadow:0 0 40px pink;
+
+}
+
+.sceneImage{
+
+    width:clamp(100px,15vw,170px);
+
+    height:auto;
+
+    max-height:170px;
+
+    object-fit:contain;
+
+    border-radius:20px;
+
+    animation:
+        floatImage 3s ease-in-out infinite,
+        breathe 2.8s ease-in-out infinite;
+
+    filter:drop-shadow(0 0 18px rgba(255,120,180,.6));
+
+    transition:.4s;
+}
+
+.overloadImage{
+
+    width:auto;
+
+    height:auto;
+
+    max-width:100%;
+
+    max-height:220px;
+
+    object-fit:contain;
+
+    animation:
+        floatImage 3s ease-in-out infinite,
+        breathe 2.8s ease-in-out infinite;
+
+    filter:drop-shadow(0 0 25px #ff4d88);
+}
+
+@keyframes sceneFloat{
+
+    0%,100%{
+
+        transform:translateY(0);
+
+    }
+
+    50%{
+
+        transform:translateY(-12px);
+
+    }
+
+}
+@keyframes floatImage{
+
+    0%,100%{
+        transform:translateY(0px);
+    }
+
+    50%{
+        transform:translateY(-10px);
+    }
+
+}
+
+@keyframes breathe{
+
+    0%,100%{
+        scale:1;
+    }
+
+    50%{
+        scale:1.05;
+    }
+
+}
+
+/* LOVE OS */
+
+#loveOS{
+
+background:#050505;
+
+}
+
+
+
+.terminal{
+    width:min(92vw,900px);
+    height:min(90vh,700px);
+
+    background:radial-gradient(circle,#220018,#050505);
+
+    border:2px solid #ff477e;
+    border-radius:40px;
+    box-shadow:0 0 60px #ff477e;
+
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+
+    padding:20px;
+
+    overflow:hidden;
+}
+
+
+
+.terminal-title{
+    font-size:clamp(28px,3vw,42px);
+
+    color:#ff8fab;
+
+    text-align:center;
+
+    margin-bottom:15px;
+
+    flex-shrink:0;
+}
+
+
+
+#output{
+    flex:1;
+
+    width:100%;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+}
+
+
+
+
+.scene{
+    width:100%;
+
+    display:flex;
+    flex-direction:column;
+
+    justify-content:center;
+    align-items:center;
+
+    gap:20px;
+
+    text-align:center;
+
+    padding:20px;
+}
+
+
+
+.icon{
+
+    font-size:100px;
+
+    animation:
+    bounce 1.5s infinite;
+
+}
+
+
+
+.scene h2{
+
+    margin:0;
+
+    font-size:clamp(2rem,4vw,3.5rem);
+
+    color:#ff8fab;
+
+    text-shadow:0 0 25px pink;
+
+}
+
+
+
+.scene p{
+
+    font-size:clamp(1rem,2vw,1.6rem);
+
+    line-height:1.3;
+
+    max-width:90%;
+
+}
+
+
+
+@keyframes appear{
+
+
+from{
+
+opacity:0;
+
+transform:scale(.3);
+
+}
+
+
+to{
+
+opacity:1;
+
+transform:scale(1);
+
+}
+
+
+}
+
+
+
+@keyframes bounce{
+
+
+50%{
+
+transform:translateY(-20px);
+
+}
+
+
+}
+
+
+
+/* FINAL HEART */
+
+#heartExplosion{
+    position:fixed;
+    inset:0;
+
+    display:none;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+
+    background:
+    radial-gradient(circle at center,
+    #2d0017 0%,
+    #12000a 35%,
+    #000000 100%);
+
+    z-index:999;
+
+    overflow:hidden;
+}
+
+
+
+.bigHeart{
+
+    animation:heartBeat 1s infinite;
+
+}
+
+@keyframes heartBeat{
+
+    0%,100%{
+
+        transform:scale(1);
+
+    }
+
+    25%{
+
+        transform:scale(1.25);
+
+    }
+
+    50%{
+
+        transform:scale(1);
+
+    }
+
+    75%{
+
+        transform:scale(1.2);
+
+    }
+
+}
+.finalImage{
+
+    position:absolute;
+
+    top:12%;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+    width:clamp(140px,20vw,260px);
+
+    height:auto;
+
+    border-radius:20px;
+
+    box-shadow:0 0 30px rgba(255,80,150,.7);
+
+    opacity:0;
+
+    animation:showImage 1s forwards;
+
+    animation-delay:1.8s;
+}
+
+@keyframes showImage{
+
+    from{
+        opacity:0;
+        transform:translate(-50%,30px) scale(.8);
+    }
+
+    to{
+        opacity:1;
+        transform:translate(-50%,0) scale(1);
+    }
+
+}
+
+
+
+@keyframes grow{
+
+
+0%{
+
+transform:scale(.2);
+
+opacity:0;
+
+}
+
+
+50%{
+
+transform:scale(1.5);
+
+opacity:1;
+
+}
+
+
+100%{
+
+transform:scale(3);
+
+opacity:0;
+
+}
+
+
+}
+
+
+
+.flyingHeart{
+
+position:absolute;
+
+font-size:40px;
+
+animation:
+
+explode 3s forwards;
+
+}
+
+
+
+@keyframes explode{
+
+
+to{
+
+
+transform:
+
+translate(var(--x),var(--y))
+rotate(360deg);
+
+
+opacity:0;
+
+}
+
+
+}
+
+
+
+.loveText{
+    position:absolute;
+    top:68%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    width:90%;
+    text-align:center;
+    color:white;
+    font-weight:900;
+    text-shadow:0 0 30px #ff477e;
+    opacity:0;
+    animation:show 2s forwards;
+    animation-delay:2s;
+}
+
+.name{
+    display:block;
+    font-size:clamp(3rem,8vw,6rem);
+    margin-bottom:20px;
+}
+
+.message{
+    display:block;
+    font-size:clamp(2rem,5vw,4.5rem);
+}
+
+
+
+@keyframes show{
+
+    from{
+        opacity:0;
+        transform:translate(-50%,-40%) scale(.9);
+    }
+
+    to{
+        opacity:1;
+        transform:translate(-50%,-50%) scale(1);
+    }
+
+}
+/* Cute Cat Entrance */
+
+
+@keyframes catFloat{
+
+    50%{
+
+        transform:translateY(-10px);
+
+    }
+
+}
+@keyframes catFloat{
+
+    50%{
+
+        transform:translateY(-10px);
+
+    }
+
+}
+
+/* ===========================
+   Mobile & Tablet Responsive
+   =========================== */
+
+@media (max-width:768px){
+
+    .buttonArea{
+
+        flex-direction:column;
+
+    }
+
+    video{
+
+        width:95vw;
+
+    }
+
+    .terminal-title{
+
+        font-size:22px;
+
+    }
+
+    .scene h2{
+
+    font-size:clamp(1.8rem,4vw,3.2rem);
+
+    line-height:1.1;
+
+}
+
+    .loveText{
+
+        font-size:clamp(32px,8vw,60px);
+
+    }
+
+}
+.scene{
+
+    width:100%;
+
+    display:flex;
+    flex-direction:column;
+
+    justify-content:center;
+    align-items:center;
+
+    gap:14px;
+
+    padding:15px;
+
+}
+
+.finalButton{
+
+    margin-top:10px;
+
+    animation:pulse 1.8s infinite;
+
+}
+
+@keyframes pulse{
+
+    0%,100%{
+        transform:scale(1);
+    }
+
+    50%{
+        transform:scale(1.08);
+    }
+
+}
+
+
+</style>
+
+
+
+
+</head>
+<body>
+
+
+<!-- BACKGROUND HEARTS -->
+
+
+
+
+
+
+<div class="card">
+
+
+
+<!-- START -->
+
+
+<div id="start" class="screen">
+
+
+<h1>
+🤍 A Little Surprise For My Love 🤍
+</h1>
+
+
+<p>
+Are you ready?
+</p>
+
+
+<div class="buttonArea">
+
+    <button onclick="ready()">
+        YES 💖
+    </button>
+
+    <img
+        id="startCat"
+        class="startCat"
+        src="images/smiling-cat.jpg"
+        alt="Cute Cat"
+    >
+
+</div>
+
+
+
+</div>
+
+<!-- SMILE -->
+
+
+<div id="smile" class="screen hidden">
+
+
+<h1>
+One Tiny Condition 😁
+</h1>
+
+
+<p>
+I need to see your cutest smile before unlocking this surprise 🤍
+</p>
+
+
+<div class="smileButtonArea">
+
+    <button onclick="openCamera()">
+        Show My Smile 📸
+    </button>
+
+    <img
+        src="images/teeth-cat.gif"
+        class="smileGif"
+        alt="Cute GIF"
+    >
+
+</div>
+
+
+</div>
+
+
+
+
+
+<!-- CAMERA -->
+
+
+<div id="cameraPage" class="screen hidden">
+
+
+<h1>
+Smile Scanner 😊
+</h1>
+
+
+<p>
+Hold your smile...
+checking 🤍
+(Don't worry, enable your camera and just smile😁, it won't save anything)
+</p>
+
+
+<div id="count"></div>
+
+
+<video id="video" autoplay playsinline></video>
+
+
+</div>
+
+
+
+
+
+
+
+<!-- LOVE OS -->
+
+
+<div id="loveOS" class="screen hidden">
+
+
+<div class="terminal">
+
+
+<div class="terminal-title">
+
+🤍 MISSION: MAKE YOU BLUSH 🤍
+
+</div>
+
+
+<div id="output"></div>
+
+
+</div>
+
+
+</div>
+
+
+
+</div>
+
+
+<!-- EXPLOSION -->
+
+
+<div id="heartExplosion">
+
+    <div class="bigHeart">
+        🤍
+    </div>
+
+    <!-- Your Image -->
+    <img src="images/kiss.gif" class="finalImage" alt="Love">
+
+<div class="loveText">
+
+    <span class="name">ABHAY</span>
+
+    <span class="message">
+        I LOVE YOU SO MUCH 💍🤍
+    </span>
+
+</div>
+
+</div>
+
+
+
+
+
+<script>
+
+
+let stream;
+
+
+
+
+
+function ready(){
+
+
+document.getElementById("start")
+.classList.add("hidden");
+
+
+document.getElementById("smile")
+.classList.remove("hidden");
+
+
+}
+
+
+
+
+
+
+async function openCamera(){
+
+
+document.getElementById("smile")
+.classList.add("hidden");
+
+
+document.getElementById("cameraPage")
+.classList.remove("hidden");
+
+
+
+let video=document.getElementById("video");
+
+
+
+try{
+
+    stream = await navigator.mediaDevices.getUserMedia({
+        video:true
+    });
+
+    video.srcObject = stream;
+
+    countdown();
+
+}
+catch(error){
+
+    alert("Please allow camera access 🤍");
+
+    document.getElementById("cameraPage").classList.add("hidden");
+    document.getElementById("smile").classList.remove("hidden");
+
+}
+
+
+
+}
+
+
+
+
+
+
+function countdown(){
+
+
+let number=3;
+
+
+let count=document.getElementById("count");
+
+
+count.innerHTML=number;
+
+
+
+let timer=setInterval(()=>{
+
+
+number--;
+
+
+if(number>0){
+
+
+count.innerHTML=number;
+
+
+}
+
+else{
+
+
+clearInterval(timer);
+
+
+count.innerHTML="🤍";
+
+
+setTimeout(()=>{
+
+
+capture();
+
+
+},1000);
+
+
+}
+
+
+},1000);
+
+
+
+}
+
+
+
+
+
+
+
+
+function capture(){
+
+
+
+stream.getTracks()
+.forEach(track=>track.stop());
+
+
+
+document.getElementById("cameraPage")
+.classList.add("hidden");
+
+
+
+showLoveOS();
+
+
+
+}
+
+
+
+
+
+
+
+
+function showLoveOS(){
+
+
+
+document.getElementById("loveOS")
+.classList.remove("hidden");
+
+
+
+let output=document.getElementById("output");
+
+
+
+let scenes=[
+
+["images/blushing-cat.jpg","ABPOO System Activated","Initializing Love Scanner..."],
+
+["images/scanning.gif","Scanning Smile...","Searching for Cuteness 🔍"],
+
+["images/surprised.gif","Smile Detected","Perfect smile found 🤍"],
+
+["images/calculating.gif","Cuteness Analysis","Calculating cuteness level 💖..."],
+
+["images/overload.jpg","CUTENESS OVERLOADED","System cannot handle this much cuteness 🚨"],
+
+["images/smirk.gif","Handsomeness Scan","Analyzing results 👑..."],
+
+["images/fire.jpg","HANDSOMENESS🔥","BREAKING THE CHARTS 🤍‍🔥📈"],
+
+["images/heartbeat.gif","Heartbeat Scan","Checking love frequency..."],
+
+["images/cry-cat.jpg","Heartbeat Out Of Scope⚠️","Too much love detected 🥹"],
+
+["images/ring.gif","FINAL RESULT💍","You are the love of my life Cutiee Patotiee 😘🤍"],
+
+["images/cat-eyes.gif","CONFIRMED🥹","Tu hi hai meri Jaan, meri Zindagi, Mera sab kuch 💖"]
+
+];
+
+
+
+let index=0;
+
+
+
+function next(){
+
+
+
+let data=scenes[index];
+
+
+
+output.innerHTML = `
+
+<div class="scene">
+
+<img
+    class="${data[0].includes('overload.jpg') ? 'overloadImage' : 'sceneImage'}"
+    src="${data[0]}"
+    alt="Scene Image">
+
+<h2>${data[1]}</h2>
+
+<p>${data[2]}</p>
+
+</div>
+
+`;
+
+
+
+index++;
+
+
+
+if(index < scenes.length){
+
+
+setTimeout(next,3000);
+
+
+}
+
+else{
+
+
+setTimeout(()=>{
+
+
+output.innerHTML = `
+
+<div class="scene">
+
+    <img class="sceneImage" src="images/cat-eyes.gif" alt="Love">
+
+    <h2>${data[1]}</h2>
+
+    <p>${data[2]}</p>
+
+    <button class="finalButton" onclick="continueSurprise()">
+        Open My Heart 🤍
+    </button>
+
+</div>
+
+`;
+
+
+},2000);
+
+
+}
+
+
+}
+
+
+
+next();
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+function continueSurprise(){
+
+
+document.body.style.overflow = "hidden";
+document.querySelector(".card")
+.style.display="none";
+
+
+
+let box=document.getElementById("heartExplosion");
+
+
+navigator.vibrate?.(200);
+box.style.display="flex";
+
+
+
+
+setTimeout(()=>{
+
+
+
+for(let i=0;i<70;i++){
+
+
+
+let heart=document.createElement("div");
+
+
+heart.className="flyingHeart";
+
+
+heart.innerHTML=
+
+["🤍","💖","💕","💗","✨","🤍‍🔥","🤍"]
+
+[
+Math.floor(Math.random()*7)
+];
+
+
+
+heart.style.left="50%";
+
+heart.style.top="50%";
+
+
+
+const distance = Math.min(window.innerWidth, window.innerHeight);
+
+let x = (Math.random()-0.5) * distance * 1.4;
+let y = (Math.random()-0.5) * distance * 1.4;
+
+
+
+heart.style.setProperty("--x",x+"px");
+
+heart.style.setProperty("--y",y+"px");
+
+
+
+box.appendChild(heart);
+
+
+
+}
+
+
+
+},1500);
+
+
+
+}
+
+// Show cat after page loads
+window.addEventListener("load", () => {
+
+    const cat = document.getElementById("startCat");
+
+    if(cat){
+        cat.classList.add("show");
+    }
+
+    // Create floating hearts
+    const hearts = ["🤍","💖","💕","💗"];
+
+    for(let i=0;i<20;i++){
+
+        const heart=document.createElement("div");
+
+        heart.className="bg-heart";
+
+        heart.innerHTML=hearts[Math.floor(Math.random()*hearts.length)];
+
+        heart.style.left=Math.random()*100+"%";
+
+        heart.style.animationDelay=Math.random()*8+"s";
+        heart.style.animationDuration =
+        (6 + Math.random()*5) + "s";
+
+        heart.style.fontSize=(20+Math.random()*25)+"px";
+
+        document.body.appendChild(heart);
+
+    }
+
+});
+</script>
+
+
+</body>
+
+</html>
